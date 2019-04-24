@@ -1,0 +1,58 @@
+#include <Keypad.h>
+const byte ROWS = 4;
+const byte COLS=4;
+byte rowPins[ROWS] = {5, 4, 3, 2}; 
+byte colPins[COLS] = {9, 8, 7, 6};
+byte pin=10;
+char keys[ROWS][COLS] = {
+{'F', 'E', 'D', 'C'}, {'B','3','6', '9'},
+{'A', '2', '5', '8'}, {'0', '1', '4', '7'}
+};
+Keypad keypad =Keypad(makeKeymap(keys), rowPins,
+colPins, ROWS, COLS );
+void Tone(int a,int b)
+{
+  tone(a,b);
+  delay(200);
+  noTone(a);
+}
+void setup() {
+  pinMode(pin,OUTPUT);
+
+}
+
+void loop() {
+  char x=keypad.getKey();
+  if(x!=NO_KEY)
+   {
+    switch(x)
+    {
+      case '0':
+        Tone(pin,262);
+        break;
+      case '1':
+        Tone(pin,294);
+        break;
+      case '4':
+        Tone(pin,330);
+        break;
+      case '7':
+        Tone(pin,349);
+        break;
+      case 'A':
+        Tone(pin,392);
+        break;
+      case '2':
+        Tone(pin,440);
+        break;
+      case '5':
+        Tone(pin,494);
+        break;
+      case '8':
+        Tone(pin,523);
+        break;
+      default:
+        break;
+    }
+   }
+}
