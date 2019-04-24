@@ -1,0 +1,50 @@
+#define eight 0.5
+#define sixteen 0.25
+#define pin  8
+const int toneTable[7][3]={
+    {131, 262, 523},  // C Do 1
+    {147, 294, 587},  // D Re 2
+    {165, 330, 659},  // E Mi 3
+    {175, 349, 698},  // F Fa 4
+    {196, 392, 784},  // G So 5
+    {220, 440, 880},  // A La 6
+    {247, 494, 988}   // B Si 7
+};
+void Tone(int a,int b,int c)
+{
+  tone(a,b,c);
+  delay(c);
+  noTone(a);
+  delay(50);
+}
+void setup() {
+  pinMode(pin,OUTPUT);
+  noTone(pin);
+}
+
+void loop() {
+  Tone(pin,toneTable[2][2],500*eight);
+  Tone(pin,toneTable[2][2],500*eight);
+  Tone(pin,toneTable[2][2],500);
+  Tone(pin,toneTable[2][2],500*eight);
+  Tone(pin,toneTable[2][2],500*eight);
+  Tone(pin,toneTable[2][2],500);
+  Tone(pin,toneTable[2][2],500*eight);
+  Tone(pin,toneTable[4][2],500*eight);
+  Tone(pin,toneTable[0][2],500*eight*1.5);
+  Tone(pin,toneTable[1][2],500*sixteen);
+  Tone(pin,toneTable[2][2],500);
+  delay(500);
+  Tone(pin,toneTable[3][2],500*eight);
+  Tone(pin,toneTable[3][2],500*eight);
+  Tone(pin,toneTable[3][2],500);
+  Tone(pin,toneTable[3][2],500*eight);
+  Tone(pin,toneTable[2][2],500*eight);
+  Tone(pin,toneTable[2][2],500);
+  Tone(pin,toneTable[4][2],500*eight);
+  Tone(pin,toneTable[4][2],500*eight);
+  Tone(pin,toneTable[3][2],500*eight);
+  Tone(pin,toneTable[1][2],500*eight);
+  Tone(pin,toneTable[0][2],500);
+  delay(500);
+}
